@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+    , initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-image: url(bck.jpg);
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <div class="mt-5 mx-auto" style="width: 20rem;">
+      <img src="user.png" class="card-img-top" alt="usuario" width="20" height="300">
+      <form>
+        <div class="form-group mt-3 mx-auto">
+          <label for="exampleInputEmail1" style="color: white">Email:</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" style="color: white">Password:</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="form-group form-check">
+        </div>
+        <a href="adm.html" class="btn btn-success mt-2">Entrar</a>
+        <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModal">
+            Cadastrar
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: black">Adicionar Funcionário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mt-5 mx-auto" style="width: 20rem;">
+                            <img src="user.png" class="card-img-top" alt="usuario" height="300">
+                            <form class="mt-3">
+                                Nome:
+                        <input type="text" class="form-control my-3" v-model="tarefa.nome"
+                            v-on:keyup.enter="adicionarTarefas">
+                        Email:
+                        <input type="text" class="form-control my-3" v-model="tarefa.email"
+                            v-on:keyup.enter="adicionarTarefas">
+                        Senha:
+                        <input type="password" class="form-control my-3" v-model="tarefa.senha"
+                            v-on:keyup.enter="adicionarTarefas">
+                        Cep:
+                        <input class="form-control my-3 col-4" name="cep" type="text" id="cep" value=""
+                            onblur="pesquisacep(this.value);" />
+                            <div class="row">
+                                <div class="col-8">Rua:
+                                <input class="form-control my-3" name="rua" type="text" id="rua" v-model="tarefa.end.rua"></div>
+                                <div class="col-4">Número:
+                                <input class="form-control my-3" name="rua" type="text" id="rua" v-model="tarefa.end.rua"></div>
+                            </div>
+                        Bairro:
+                        <input class="form-control my-3" name="bairro" type="text" id="bairro"
+                            v-model="tarefa.end.bairro" />
+                        Cidade:
+                        <input class="form-control my-3" name="cidade" type="text" id="cidade"
+                            v-model="tarefa.cidade" />
+                        Estado:
+                        <input class="form-control my-3 col-2" name="uf" type="text" id="uf" size="2"
+                            v-model="tarefa.estado" />
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                            value="option1" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Adminstrador
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                            value="option2">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                            Funcionário
+                                        </label>
+                                    </div>
+                            </form>
+                
+                
+                
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-primary" @click="adicionarTarefas">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="adm.js"></script>
+</body>
+
+</html>
